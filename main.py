@@ -9,11 +9,11 @@ from sklearn.cluster import KMeans
 
 wcss = []
 # Pengujian dengan menggunakan elbow_method
-# for i in range(1, 11):
-#     kmeans = KMeans(n_clusters= i, init= 'k-means++', random_state= 42)
-#     kmeans.fit(X=X)
-#     WCSS.append(kmeans.inertia_)
-# plt.plot(range(1, 11), WCSS )
+for i in range(1, 11):
+    kmeans = KMeans(n_clusters= i, init= 'k-means++', random_state= 42)
+    kmeans.fit(X=X)
+    wcss.append(kmeans.inertia_)
+# plt.plot(range(1, 11), wcss )
 # plt.title("ELBOW METHOD")
 # plt.xlabel("Numbers of cluster")
 # plt.ylabel("WCSS")
@@ -30,4 +30,11 @@ wcss = []
 # ideal_silhouette_score_max = max(wcss)
 # ideal_silhouette_score = wcss.index(ideal_silhouette_score_max) + 2
 # print(f"Ideal Number Cluster : {ideal_silhouette_score}")
+
+# Melatih k-means dengan dataset
+kmeans = KMeans(n_clusters=5, init='k-means++', random_state=42)
+y_kmeans = kmeans.fit_predict(X)
+print(y_kmeans)
+
+# Visualisasi k-means
     
